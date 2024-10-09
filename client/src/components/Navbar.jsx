@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { IoMdHome } from "react-icons/io";
 import { MdSpaceDashboard } from "react-icons/md";
 import { FaAddressBook } from "react-icons/fa";
-import { FcSalesPerformance } from "react-icons/fc";
-import { IoMdMenu } from "react-icons/io";
+import { SiSimpleanalytics } from "react-icons/si";
 import { AiOutlineProduct } from "react-icons/ai";
+import { IoMdMenu } from "react-icons/io";
 import { IoMdClose } from "react-icons/io";
 import { Link } from "react-router-dom"
+import NavbarItem from './NavbarItem';
 function Navbar() {
    const [menuStatus,setMenuStatus] = useState(0) 
    const menuSwitch = () => {
@@ -17,50 +18,40 @@ function Navbar() {
     <>
    { 
     menuStatus?
-    <div className='flex justify-center items-center fixed bottom-0 left-0 w-full bg-blue-800  
-    xl:left-0 xl:top-16 xl:flex-col xl:w-auto 
-    lg:left-0 lg:top-16 lg:flex-col lg:w-auto
-    md:left-0 md:top-16 md:flex-col md:w-auto
-    gap-5 pt-5 pb-5 px-2' id='menu'>
-        
+    <div className='grid grid-cols-3 grid-rows-none w-full xl:flex xl:flex-col xl:gap-5 xl:w-auto lg:flex lg:flex-col lg:w-auto lg:gap-5 md:flex md:flex-col md:w-auto md:gap-5 bg-slate-800 xl:bg-transparent lg:bg-transparent md:bg-transparent pt-5 pb-5 fixed bottom-0 xl:bottom-16 lg:bottom-16 md:bottom-16 px-3' id='menu'>
+        <div>
             <Link to={"/"} >
-                <div className='flex flex-col justify-center items-center text-white hover:text-amber-500 hover:cursor-pointer gap-3'>
-                    <IoMdHome className='text-xl' />
-                    <p>anasayfa</p>
-                </div>
+                <NavbarItem icon={<IoMdHome className='text-xl'/>} title={"Anasayfa"} />
             </Link>
+        </div>
+        <div>
             <Link to={"/"}>
-                <div className='flex flex-col justify-center items-center text-white hover:text-amber-500 hover:cursor-pointer gap-3'>
-                    <MdSpaceDashboard className='text-xl ' />
-                    <p>dashboard</p>
-                </div>
+                <NavbarItem icon={<MdSpaceDashboard className='text-xl'/>} title={"Dashboard"} />
             </Link>
+        </div>
+        <div>
             <Link to={"/"}>
-                <div className='flex flex-col justify-center items-center text-white hover:text-amber-500 hover:cursor-pointer gap-3'>
-                    <FaAddressBook className='text-xl ' />
-                    <p>veresiye</p>
-                </div>
+                <NavbarItem icon={<FaAddressBook className='text-xl'/>} title={"Veresiye"}/>
             </Link>
+        </div>
+        <div>
             <Link to={"/sales"}>
-                <div className='flex flex-col justify-center items-center text-white hover:text-amber-500 hover:cursor-pointer gap-3'>
-                    <FcSalesPerformance className='text-xl ' />
-                    <p>satış</p>
-                </div>
+                <NavbarItem icon={<SiSimpleanalytics className='text-xl'/>} title={"Satış"} />
             </Link>
+        </div>
+        <div>
             <Link to={"/"}>
-                <div className='flex flex-col justify-center items-center text-white hover:text-amber-500 hover:cursor-pointer gap-3'>
-                    <AiOutlineProduct className='text-xl ' />
-                    <p>toptancı</p>
-                </div>
+            <NavbarItem icon={<AiOutlineProduct className='text-xl'/>} title={"Ürün"} />
             </Link>
+        </div>
     </div>:
     <div></div>
     }
 
-    <div className='flex justify-center items-center fixed bottom-24 left-2 xl:bottom-5 xl:left-5 lg:bottom-5 lg:left-5'>
-        <button className='flex justify-center items-center border rounded-full bg-blue-950 shadow-xl p-3 hover:cursor-pointer' id='menu-close' onClick={e => menuSwitch()}>
+    <div className='flex justify-center items-center fixed bottom-52 left-2 xl:bottom-5 xl:left-3 lg:bottom-4 lg:left-3 md:bottom-4 md:left-3'>
+        <button className='flex justify-center items-center rounded-full bg-slate-200 border-2 border-black shadow-xl text-blue-950 hover:text-white hover:bg-blue-950 p-3 hover:cursor-pointer transition-all' id='menu-close' onClick={e => menuSwitch()}>
         {
-            menuStatus?<IoMdClose className='text-3xl text-white' />:<IoMdMenu className='text-3xl text-white' />
+            menuStatus?<IoMdClose className='text-2xl' />:<IoMdMenu className='text-2xl' />
         }
         </button>
     </div>

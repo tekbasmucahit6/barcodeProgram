@@ -3,8 +3,8 @@ import {
   BrowserRouter as Router,Routes,Route
 }
 from "react-router-dom"
-import Index from "./pages/Index"
-import Barcode from "./pages/Barcode"
+import Index from "./pages/index/Index"
+import Barcode from "./pages/barcode/Barcode"
 function App() {
 
   return (
